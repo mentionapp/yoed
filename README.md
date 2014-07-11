@@ -1,8 +1,8 @@
-#Yo'ed
+# YO'ed
 
-Yo'ed is an extensible hub, written in Go, to dispatch actions when someone yo you.
+YO'ed is hub written in Go to dispatch actions when someone YO you.
 
-#Usage
+# Usage
 
 You need the [Go tools](http://golang.org/doc/install) installed.
 
@@ -13,38 +13,39 @@ cp config.json.dist config.json
 $GOPATH/bin/yoed
 ```
 
-#Configuration
+Then change the callback URL in [Yo's API dashboard](http://developer.justyo.co/) to point to `http://your.server:port/yoed`.
+
+# Configuration
 
 The configuration is specified in the `config.json` file.
 
-### Listen
+## `"listen"`
 
-Specify the address and port to listen to. Change the callback URL in [Yo's API dashboard](http://developer.justyo.co/) to point to `http://.../yoed`.
+Specifies the address and port to listen on, e.g. `0.0.0.0:12345` to listen on port 12345 on any address.
 
-### Handlers
+## `"handlers"`
 
 This is the enabled handlers list. Each handler has its own configuration. See below for more details about handlers.
 
-#Bundled Handlers
+### Available Handlers
 
-Yo'ed implements two handlers:
+YO'ed comes with a few handlers:
 
-* Slack
-* Yo-back
+#### Slack handler
 
-### Slack handler
+Uses [Slack](https://slack.com)'s [Incoming WebHooks](https://slack.com/services/new/incoming-webhook) integration to YO in a room.
 
-It posts an automatic message on a specified [Slack](https://slack.com) room.
-The only configuration parameter is the `webhook_url` URL you get from the Slack's [Incoming WebHooks](https://slack.com/services/new/incoming-webhook) integration settings.
+The only configuration parameter is the `webhook_url` URL you get while setting up the webhook.
 
-### Yo-back
+#### YO-back
 
-It simply re-posts a YO to users who YO you.
+Sends back a YO to users who YO you.
+
 The only configuration parameter is the `api_token`.
 
-### Custom handlers
+#### Custom handlers
 
-Custom handlers can be added easily. They must be compatible with the `yoedHandler` interface:
+Custom handlers can be added easily. They only have to be compatible with the `yoedHandler` interface:
 
 ```go
 type yoedHandler interface {
