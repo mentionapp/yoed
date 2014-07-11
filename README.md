@@ -19,32 +19,35 @@ The configuration is specified in the `config.json` file.
 
 ### Listen
 
-Specify the URL and port to listen to. This is a URL you specify in your [Yo's API dashboard](http://developer.justyo.co/).
+Specify the address and port to listen to. Change the callback URL in [Yo's API dashboard](http://developer.justyo.co/) to point to `http://.../yoed`.
 
 ### Handlers
 
-This is the enabled handlers list. Each handler has its own configuration. See below for more details about bundled handlers.
+This is the enabled handlers list. Each handler has its own configuration. See below for more details about handlers.
 
 #Bundled Handlers
 
-Yo'ed is shipped with two default handlers:
+Yo'ed implements two handlers:
 
 * Slack
 * Yo-back
 
-All Yo-ed's handlers must satisfy this simple Go interface:
+### Slack handler
+
+It posts an automatic message on a specified [Slack](https://slack.com) room.
+The only configuration parameter is the `webhook_url` URL you get from the Slack's [Incoming WebHooks](https://slack.com/services/new/incoming-webhook) integration settings.
+
+### Yo-back
+
+It simply re-posts a YO to users who YO you.
+The only configuration parameter is the `api_token`.
+
+### Custom handlers
+
+Custom handlers can be added easily. They must be compatible with the `yoedHandler` interface:
+
 ```go
 type yoedHandler interface {
 	Handle(username string)
 }
 ```
-
-### Slack handler
-
-It posts an automatic message on a specified [Slack room](slack.com).
-The only configuration parameter is the `webhook_url` URL you get from the Slack's settings.
-
-### Yo-back
-
-It simply re-posts a yo to the user who has Yo you. 
-The only configuration parameter is the `api_token`.
