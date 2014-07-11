@@ -1,0 +1,11 @@
+{
+    "listen": "0.0.0.0:12345",
+    "handlers": {
+        "slack": {
+            "webhook_url": "https://xxx.slack.com/services/hooks/incoming-webhook?token=...."
+        },
+        "yoback": {
+            "api_token": "..."
+        }
+    }
+}
