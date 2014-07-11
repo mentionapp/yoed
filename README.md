@@ -4,7 +4,7 @@ Yo'ed is an extensible hub, written in Go, to dispatch actions when someone yo y
 
 #Usage
 
-You need the [Go runtime](http://golang.org/doc/install) installed.
+You need the [Go tools](http://golang.org/doc/install) installed.
 
 ```go
 go get github.com/mentionapp/yoed
