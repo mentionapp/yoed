@@ -77,7 +77,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/yoed", func(w http.ResponseWriter, r *http.Request) {
 
-		username := r.URL.Query().Get("username")
+		username := r.FormValue("username")
 		log.Printf("got a YO from %s", username)
 
 		for name, handler := range handlers {
