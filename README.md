@@ -1,6 +1,6 @@
 # YO'ed
 
-YO'ed is hub written in Go to dispatch actions when someone YO you.
+YO'ed is hub written in Go to dispatch actions when someone [YO](https://en.wikipedia.org/wiki/Yo_(app)) you.
 
 ## Usage
 
